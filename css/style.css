@@ -321,7 +321,7 @@ body::-webkit-scrollbar {
   column-gap: 1.5rem
 }
 .collections__image {
-  flex: 1 1 6.25rem;
+  flex: 1 0 6.25rem;
   max-width: 6.25rem;
   position: relative;
   border-radius: 1.875rem
@@ -383,6 +383,7 @@ body::-webkit-scrollbar {
 }
 .title {
   font-family: MonumentExtended-Regular;
+  line-height: 1.2;
   letter-spacing: .075rem;
   text-transform: uppercase
 }
@@ -712,7 +713,9 @@ body::-webkit-scrollbar {
 }
 .block__apps {
   display: flex;
-  gap: 1rem
+  -webkit-column-gap: 1rem;
+  -moz-column-gap: 1rem;
+  column-gap: 1rem
 }
 .block__link-app {
   flex: 1 0 16.875rem;
@@ -1510,7 +1513,7 @@ button.swiper-pagination-bullet {
     justify-content: space-between
   }
   .hero__image {
-    flex: 1 0 47.839506%
+    flex: 1 1 47.839506%
   }
   .block-hero {
     flex-direction: column
@@ -1860,7 +1863,8 @@ button.swiper-pagination-bullet {
 }
 @media (max-width:74.99875em) {
   .block__apps {
-    flex-direction: column
+    flex-direction: column;
+    row-gap: 1.5rem
   }
   .block__link-app {
     flex: 0 1 auto
@@ -2005,6 +2009,9 @@ button.swiper-pagination-bullet {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg)
   }
+  .title {
+    text-align: center
+  }
   .footer__logo {
     flex: 1 1 100%
   }
@@ -2013,6 +2020,10 @@ button.swiper-pagination-bullet {
   }
   .body-footer {
     flex-direction: column-reverse
+  }
+  .collections-tabs__head {
+    justify-content: center;
+    text-align: center
   }
   .collections-tabs__navigation {
     display: none
@@ -2029,8 +2040,7 @@ button.swiper-pagination-bullet {
     align-items: center
   }
   .item-insights__title {
-    text-align: center;
-    max-width: 50%
+    text-align: center
   }
   .hero__label {
     text-align: right
