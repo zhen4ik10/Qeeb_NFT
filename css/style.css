@@ -781,52 +781,7 @@ body::-webkit-scrollbar {
   z-index: 3
 }
 .hero__circle {
-  position: absolute;
-  bottom: 0;
-  right: 100%;
-  -webkit-transform: translateX(50%);
-  transform: translateX(50%);
-  width: 12.5rem;
-  height: 12.5rem;
-  border-radius: 50%;
-  fill: rgba(129,134,152,.2);
-  -webkit-backdrop-filter: blur(1.5625rem);
-  backdrop-filter: blur(1.5625rem);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-  padding: .9375rem
-}
-.hero__liter {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 50%;
-  display: flex;
-  gap: .6875rem
-}
-.hero__liter span {
-  font-family: MonumentExtended-Regular;
-  position: absolute;
-  text-transform: uppercase
-}
-.hero__liter span:nth-child(1) {
-  -webkit-transform: rotate(19.683deg);
-  transform: rotate(19.683deg);
-  left: calc(50% + .9375rem)
-}
-.hero__liter span:nth-child(2) {
-  -webkit-transform: rotate(36.957deg);
-  transform: rotate(36.957deg);
-  top: .625rem;
-  left: calc(50% + 2.25rem)
-}
-.hero__liter span:nth-child(3) {
-  -webkit-transform: rotate(53.699deg);
-  transform: rotate(53.699deg);
-  top: 1.5rem;
-  left: calc(50% + 3.125rem)
+  display: none
 }
 .block-hero {
   display: flex;
@@ -836,13 +791,37 @@ body::-webkit-scrollbar {
 }
 .block-hero__head {
   max-width: 31.25rem;
-  display: flex
+  display: flex;
+  align-items: flex-start
+}
+.block-hero__button {
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 .block-hero__button:not(:last-child) {
   margin-bottom: 2.5rem
 }
+.block-hero__icons {
+  display: flex
+}
 .block-hero__icon {
+  position: relative;
+  max-width: 6.25rem
+}
+.block-hero__icon img {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%
+}
+.block-hero__icon--decor-line {
   position: relative
+}
+.block-hero__icon--decor-line::after,
+.block-hero__icon--decor-line::before {
+  content: "";
+  position: absolute
 }
 .counters {
   display: flex;
@@ -1515,30 +1494,87 @@ button.swiper-pagination-bullet {
   .hero__image {
     flex: 1 1 47.839506%
   }
-  .block-hero {
-    flex-direction: column
-  }
-  .block-hero__icon::after {
-    content: "";
+  .hero__circle {
+    display: block;
     position: absolute;
+    bottom: 0;
+    left: -12%;
+    width: 12.5rem;
+    height: 12.5rem;
+    border-radius: 50%;
+    background-color: rgba(129,134,152,.2);
+    -webkit-backdrop-filter: blur(1.5625rem);
+    backdrop-filter: blur(1.5625rem);
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .hero__circle::before {
+    font-size: 1.25rem
+  }
+  .hero__circle p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: rotateText 26s linear infinite;
+    animation: rotateText 26s linear infinite
+  }
+  @-webkit-keyframes rotateText {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0)
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg)
+    }
+  }
+  @keyframes rotateText {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0)
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg)
+    }
+  }
+  .hero__circle span {
+    font-family: MonumentExtended-Regular;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    -webkit-transform-origin: 0 6.25rem;
+    transform-origin: 0 6.25rem;
+    line-height: 1.1875;
+    padding-top: .625rem
+  }
+  .block-hero {
+    flex-direction: column;
+    row-gap: 1.5rem
+  }
+  .block-hero__button {
+    flex: 0 1 7.5rem
+  }
+  .block-hero__icon {
+    flex-basis: 6.25rem
+  }
+  .block-hero__icon:not(:first-child) {
+    margin-left: -1rem
+  }
+  .block-hero__icon--decor-line::after {
     left: calc(100% + .625rem);
-    top: 0;
     background: url(../img/line-down.svg) center/cover no-repeat;
     width: var(--width);
     height: var(--height)
   }
-  .block-hero__icon img:not(:first-child) {
-    margin-left: -1rem
-  }
 }
 @media (min-width:61.99875em) and (min-width:103.125em) {
-  .block-hero {
-    row-gap: 5rem
-  }
-  .block-hero__icon::after {
+  .block-hero__icon--decor-line::after {
     --width: 7.8125rem
   }
-  .block-hero__icon::after {
+  .block-hero__icon--decor-line::after {
     --height: 7.5rem
   }
 }
@@ -1900,24 +1936,18 @@ button.swiper-pagination-bullet {
   .block-hero__button {
     align-self: flex-start
   }
-  .block-hero__icon {
-    align-self: flex-start
+  .block-hero__icons {
+    flex-direction: column
   }
-  .block-hero__icon::after {
-    content: "";
-    position: absolute;
-    top: calc(100% - .625rem);
-    left: .9375rem;
+  .block-hero__icon:not(:first-child) {
+    margin-top: -1rem
+  }
+  .block-hero__icon--decor-line::after {
+    top: 90%;
+    left: 25%;
     background: url(../img/line-right.svg) center/cover no-repeat;
     width: 5.9375rem;
     height: 4.625rem
-  }
-  .block-hero__icon img:not(:first-child) {
-    margin-top: -1rem
-  }
-  .block-hero__icon {
-    display: flex;
-    flex-direction: column
   }
   .counters {
     flex-direction: column;
@@ -2048,6 +2078,9 @@ button.swiper-pagination-bullet {
   .hero__title {
     text-align: center
   }
+  .block-hero {
+    justify-content: center
+  }
   .block-hero__button {
     align-self: center
   }
@@ -2067,15 +2100,11 @@ button.swiper-pagination-bullet {
 }
 @media (max-width:29.99875em) {
   .button {
-    display: flex;
     align-items: center;
     justify-content: center
   }
   .collections__item {
     align-items: flex-start
-  }
-  .block-hero {
-    justify-content: center
   }
 }
 @media (max-width:26.56125em) {
@@ -2614,46 +2643,39 @@ button.swiper-pagination-bullet {
     }
   }
 }
+@media (min-width:47.99875em) and (max-width:61.99875em) {
+  .hero__image {
+    align-self: center;
+    max-width: 80%
+  }
+}
 @media (min-width:61.99875em) and (min-width:61.9375em) and (max-width:103.125em) {
-  @supports (row-gap:clamp(3.125rem ,0.3053869499rem + 4.5523520486vw ,5rem)) {
-    .block-hero {
-      row-gap: clamp(3.125rem ,.3053869499rem + 4.5523520486vw ,5rem)
-    }
-  }
-  @supports not (row-gap:clamp(3.125rem ,0.3053869499rem + 4.5523520486vw ,5rem)) {
-    .block-hero {
-      row-gap: calc(3.125rem + 1.875 * (100vw - 61.9375rem)/ 41.1875)
-    }
-  }
   @supports (--width:clamp(4.6875rem ,-0.0118550835rem + 7.5872534143vw ,7.8125rem)) {
-    .block-hero__icon::after {
+    .block-hero__icon--decor-line::after {
       --width: clamp( 4.6875rem , -0.0118550835rem  +  7.5872534143vw , 7.8125rem )
     }
   }
   @supports not (--width:clamp(4.6875rem ,-0.0118550835rem + 7.5872534143vw ,7.8125rem)) {
-    .block-hero__icon::after {
+    .block-hero__icon--decor-line::after {
       --width: calc(4.6875rem + 3.125 * (100vw - 61.9375rem) / 41.1875)
     }
   }
   @supports (--height:clamp(4.375rem ,-0.3243550835rem + 7.5872534143vw ,7.5rem)) {
-    .block-hero__icon::after {
+    .block-hero__icon--decor-line::after {
       --height: clamp( 4.375rem , -0.3243550835rem  +  7.5872534143vw , 7.5rem )
     }
   }
   @supports not (--height:clamp(4.375rem ,-0.3243550835rem + 7.5872534143vw ,7.5rem)) {
-    .block-hero__icon::after {
+    .block-hero__icon--decor-line::after {
       --height: calc(4.375rem + 3.125 * (100vw - 61.9375rem) / 41.1875)
     }
   }
 }
 @media (min-width:61.99875em) and (max-width:61.9375em) {
-  .block-hero {
-    row-gap: 3.125rem
-  }
-  .block-hero__icon::after {
+  .block-hero__icon--decor-line::after {
     --width: 4.6875rem
   }
-  .block-hero__icon::after {
+  .block-hero__icon--decor-line::after {
     --height: 4.375rem
   }
 }
