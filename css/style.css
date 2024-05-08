@@ -24,6 +24,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
+._icon-ar-top-45:before {
+  content: "\e90e"
+}
 ._icon-s-youtube:before {
   content: "\e900"
 }
@@ -704,8 +707,18 @@ body::-webkit-scrollbar {
 .item-insights__button {
   padding: 1.125rem 1.1875rem;
   font-weight: 700;
-  border: .0625rem solid #fff;
+  border: .0625rem solid;
   border-radius: 1.875rem;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  -webkit-column-gap: .6875rem;
+  -moz-column-gap: .6875rem;
+  column-gap: .6875rem;
+  transition: all .3s ease-in-out
+}
+.item-insights__button::before {
+  font-size: .9375rem;
   transition: all .3s ease-in-out
 }
 .block__container {
@@ -2713,7 +2726,11 @@ button.swiper-pagination-bullet {
     color: #52ffe0
   }
   .item-insights__button:hover {
-    color: #52ffe0
+    background-color: #52ffe0;
+    color: #2c2d31
+  }
+  .item-insights__button:hover::before {
+    color: #2c2d31
   }
   .block__link-app:hover {
     background-color: #52ffe0;
