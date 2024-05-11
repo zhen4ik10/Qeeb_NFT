@@ -3807,8 +3807,8 @@
                     dynamicBullets: true
                 },
                 navigation: {
-                    prevEl: ".swiper-button-prev",
-                    nextEl: ".swiper-button-next"
+                    prevEl: ".categories__button-prev",
+                    nextEl: ".categories__button-next"
                 },
                 breakpoints: {
                     320: {
