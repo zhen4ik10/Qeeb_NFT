@@ -276,7 +276,8 @@ body::-webkit-scrollbar {
   border-radius: 3.125rem;
   background-color: #52ffe0;
   color: #2c2d31;
-  letter-spacing: .02rem
+  letter-spacing: .02rem;
+  transition: all .3s ease-in-out
 }
 .categories__item {
   background-color: #2c2d31;
@@ -288,6 +289,7 @@ body::-webkit-scrollbar {
   align-items: center;
   border-radius: 3.125rem;
   overflow: hidden;
+  cursor: pointer;
   transition: all .3s ease-in-out
 }
 .categories__image {
@@ -718,8 +720,7 @@ body::-webkit-scrollbar {
   transition: all .3s ease-in-out
 }
 .item-insights__button::before {
-  font-size: .9375rem;
-  transition: all .3s ease-in-out
+  font-size: .9375rem
 }
 .block__container {
   background-color: #1d1e22;
@@ -2694,6 +2695,9 @@ button.swiper-pagination-bullet {
   .menu__link:hover {
     color: #52ffe0
   }
+  .button:hover {
+    background-color: rgba(82,255,223,.7333333333)
+  }
   .categories__item:hover {
     box-shadow: 0 0 .625rem .3125rem #52ffe0
   }
@@ -2730,7 +2734,8 @@ button.swiper-pagination-bullet {
     color: #2c2d31
   }
   .item-insights__button:hover::before {
-    color: #2c2d31
+    color: #2c2d31;
+    transition: all .3s ease-in-out
   }
   .block__link-app:hover {
     background-color: #52ffe0;
